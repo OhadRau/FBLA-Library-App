@@ -1,0 +1,224 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Map",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "http://104.128.224.237/img/library.png"
+                    },
+                    {
+                      "type": "label",
+                      "text": "I'm looking for...",
+                      "style": {
+                        "padding": "16",
+                        "align": "center"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "General (000-099)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "General (000-099)",
+                          "description": "Here you can find general information texts, such as encyclopedias or reference texts. \n\nFind General books in the Olive section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Philosophy (100-199)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Philosophy (100-199)",
+                          "description": "Here you can find books written by the world's great philosophers! From Aristotle to Dostoevsky! \n\nFind Philosophy books in the Light Blue section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Religion (200-299)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Religion (200-299)",
+                          "description": "Read up on the world's numerous religions and theological texts! \n\nFind Religion books in the Yellow section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Social Science (300-399)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Social Science (300-399)",
+                          "description": "Find out how society runs, read up on Law and the major governments of the world in the Social Science section. \n\nFind Social Science books in the Pink section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Languages (300-399)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Languages (300-399)",
+                          "description": "Want to pick up a new language or read foreign texts? Find them here. \n\nFind Languages books in the Orange section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Natural Science (500-599)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Natrual Science (500-599)",
+                          "description": "Find out how the world works! \n\nFind Natural Science books in the Green section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Applied Science (600-699)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Applied Science (600-699)",
+                          "description": "Want to be a doctor, an engineer, or any applied science? Find books on that here! \n\nFind Applied Science books in the Red section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Arts and Recreation (700-799)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Arts and Recreation (700-799)",
+                          "description": "Here you can find works from DaVinci to Picasso and more! \n\nFind Arts and Recreation books in the Grey section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Literature (800-899)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Literature (800-899)",
+                          "description": "Find all of the classics here! From Catcher in the Rye to Hamlet, you can find it here! \n\nFind Literature books in the Purple section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Geography and History (900-999)",
+                      "action": {
+                        "type": "$util.alert",
+                        "options": {
+                          "title": "Geography and History (900-999)",
+                          "description": "Find and atlas or a history textbook in this section! \n\nFind Geography and History books in the Royal Blue section!"
+                        }
+                      },
+                      "style": {
+                        "spacing": "10",
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "footer": {
+            "tabs": {
+              "style": {
+                "background": "rgba(255,255,255,1)",
+                "color:disabled": "#cecece",
+                "color": "#009efa"
+              },
+              "items": [
+                {
+                  "image": "http://104.128.224.237/img/book.png",
+                  "text": "Library",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://main.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/map.png",
+                  "text": "Map",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://map.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/shelf.png",
+                  "text": "My Shelf",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://shelf.json"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

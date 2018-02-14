@@ -1,0 +1,227 @@
+{
+  "$jason": {
+    "head": {
+      "title": "My Shelf",
+      "actions": {
+        "$show": {
+          "type": "$network.request",
+          "options": {
+            "url": "http://104.128.224.237/user/{{$global.username}}/books"
+          },
+          "success": {
+            "type": "$render"
+          }
+        },
+        "$pull": {
+          "type": "$reload"
+        }
+      },
+      "templates": {
+        "body": {
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Shelf",
+                  "style": {
+                    "align": "center",
+                    "font": "bold"
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "vertical",
+                      "components": {
+                        "{{#each $jason.stock.filter((x, i) => i % 2 === 0)}}": {
+                          "type": "vertical",
+                          "style": [
+                            {
+                              "{{#if (Date.parse(due) - new Date() <= 0)}}": {
+                                "align": "center",
+                                "height": "30%",
+                                "background": "#EF5350"
+                              }
+                            }
+                          ],
+                          "components": [
+                            {
+                              "type": "button",
+                              "url": "http://104.128.224.237/img/{{isbn}}",
+                              "action": {
+                                "type": "$util.picker",
+                                "options": {
+                                  "title": "{{title}}",
+                                  "items": [
+                                    {
+                                      "text": "Check In",
+                                      "action": {
+                                        "type": "$network.request",
+                                        "options": {
+                                          "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/checkInFor/{{$global.username}}",
+                                          "method": "POST"
+                                        },
+                                        "success": {
+                                          "trigger": "$show"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "style": {
+                                "height": "20%"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{title}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{author}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{due}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "space",
+                              "style": {
+                                "height": "3%"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "vertical",
+                      "components": {
+                        "{{#each $jason.stock.filter((x, i) => i % 2 === 1)}}": {
+                          "type": "vertical",
+                          "style": [
+                            {
+                              "{{#if (Date.parse(due) - new Date() <= 0)}}": {
+                                "align": "center",
+                                "height": "30%",
+                                "background": "#EF5350"
+                              }
+                            }
+                          ],
+                          "components": [
+                            {
+                              "type": "button",
+                              "url": "http://104.128.224.237/img/{{isbn}}",
+                              "action": {
+                                "type": "$util.picker",
+                                "options": {
+                                  "title": "{{title}}",
+                                  "items": [
+                                    {
+                                      "text": "Check In",
+                                      "action": {
+                                        "type": "$network.request",
+                                        "options": {
+                                          "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/checkInFor/{{$global.username}}",
+                                          "method": "POST"
+                                        },
+                                        "success": {
+                                          "trigger": "$show"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              "style": {
+                                "height": "20%"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{title}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{author}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{due}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "space",
+                              "style": {
+                                "height": "3%"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "footer": {
+            "tabs": {
+              "style": {
+                "background": "rgba(255,255,255,1)",
+                "color:disabled": "#cecece",
+                "color": "#009efa"
+              },
+              "items": [
+                {
+                  "image": "http://104.128.224.237/img/book.png",
+                  "text": "Library",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://main.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/map.png",
+                  "text": "Map",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://map.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/shelf.png",
+                  "text": "My Shelf",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://shelf.json"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

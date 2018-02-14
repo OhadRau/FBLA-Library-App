@@ -1,0 +1,313 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Bibliotech High Library",
+      "actions": {
+        "$show": {
+          "type": "$network.request",
+          "options": {
+            "url": "http://104.128.224.237/books/stock"
+          },
+          "success": {
+            "type": "$render",
+            "success": {
+              "type": "$global.set",
+              "options": {
+                "username": "{{$global.username || Math.random().toString(36).substring(7)}}"
+              }
+            }
+          }
+        },
+        "$pull": {
+          "type": "$reload"
+        }
+      },
+      "templates": {
+        "body": {
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Bibliotech High Library",
+                  "style": {
+                    "align": "center",
+                    "font": "bold"
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "vertical",
+                      "components": {
+                        "{{#each $jason.stock.filter((x, i) => i % 2 === 0)}}": {
+                          "type": "vertical",
+                          "style": {
+                            "align": "center",
+                            "height": "30%"
+                          },
+                          "components": [
+                            {
+                              "type": "button",
+                              "url": "http://104.128.224.237/img/{{isbn}}",
+                              "action": {
+                                "type": "$util.picker",
+                                "options": {
+                                  "title": "{{title}}",
+                                  "items": [
+                                    {
+                                      "{{#if left > 0}}": [
+                                        {
+                                          "text": "Info",
+                                          "action": {
+                                            "type": "$util.alert",
+                                            "options": {
+                                              "title": "{{title}}",
+                                              "description": "Author: {{author}}\nPublisher: {{publisher}}\nEdition: {{edition}}\nDewey Decimal: {{dewey}}"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "text": "Check Out",
+                                          "action": {
+                                            "type": "$network.request",
+                                            "options": {
+                                              "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/checkOutFor/{{$global.username}}",
+                                              "method": "POST"
+                                            },
+                                            "success": {
+                                              "trigger": "$show"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "{{#else}}": [
+                                        {
+                                          "text": "Info",
+                                          "action": {
+                                            "type": "$util.alert",
+                                            "options": {
+                                              "title": "{{title}}",
+                                              "description": "Author: {{author}}\nPublisher: {{publisher}}\nEdition: {{edition}}\nDewey Decimal: {{dewey}}"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "text": "Reserve",
+                                          "action": {
+                                            "type": "$network.request",
+                                            "options": {
+                                              "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/reserveFor/{{$global.username}}",
+                                              "method": "POST"
+                                            },
+                                            "success": {
+                                              "type": "$util.alert",
+                                              "options": {
+                                                "title": "{{title}} Reserved",
+                                                "description": "Once a copy has been checked into the library, it will automatically be checked out to you. We thank you for your patience."
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "style": {
+                                "height": "20%"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{title}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{author}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{left + ' left in stock'}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "space",
+                              "style": {
+                                "height": "3%"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "vertical",
+                      "components": {
+                        "{{#each $jason.stock.filter((x, i) => i % 2 === 1)}}": {
+                          "type": "vertical",
+                          "style": {
+                            "align": "center",
+                            "height": "30%"
+                          },
+                          "components": [
+                            {
+                              "type": "button",
+                              "url": "http://104.128.224.237/img/{{isbn}}",
+                              "action": {
+                                "type": "$util.picker",
+                                "options": {
+                                  "title": "{{title}}",
+                                  "items": [
+                                    {
+                                      "{{#if left > 0}}": [
+                                        {
+                                          "text": "Info",
+                                          "action": {
+                                            "type": "$util.alert",
+                                            "options": {
+                                              "title": "{{title}}",
+                                              "description": "Author: {{author}}\nPublisher: {{publisher}}\nEdition: {{edition}}\nDewey Decimal: {{dewey}}"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "text": "Check Out",
+                                          "action": {
+                                            "type": "$network.request",
+                                            "options": {
+                                              "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/checkOutFor/{{$global.username}}",
+                                              "method": "POST"
+                                            },
+                                            "success": {
+                                              "trigger": "$show"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "{{#else}}": [
+                                        {
+                                          "text": "Info",
+                                          "action": {
+                                            "type": "$util.alert",
+                                            "options": {
+                                              "title": "{{title}}",
+                                              "description": "Author: {{author}}\nPublisher: {{publisher}}\nEdition: {{edition}}\nDewey Decimal: {{dewey}}"
+                                            }
+                                          }
+                                        },
+                                        {
+                                          "text": "Reserve",
+                                          "action": {
+                                            "type": "$network.request",
+                                            "options": {
+                                              "url": "http://104.128.224.237/books/byIsbn/{{isbn}}/reserveFor/{{$global.username}}",
+                                              "method": "POST"
+                                            },
+                                            "success": {
+                                              "type": "$util.alert",
+                                              "options": {
+                                                "title": "{{title}} Reserved",
+                                                "description": "Once a copy has been checked into the library, it will automatically be checked out to you. We thank you for your patience."
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "style": {
+                                "height": "20%"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{title}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{author}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{left + ' left in stock'}}",
+                              "style": {
+                                "align": "center"
+                              }
+                            },
+                            {
+                              "type": "space",
+                              "style": {
+                                "height": "3%"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "footer": {
+            "tabs": {
+              "style": {
+                "background": "rgba(255,255,255,1)",
+                "color:disabled": "#cecece",
+                "color": "#009efa"
+              },
+              "items": [
+                {
+                  "image": "http://104.128.224.237/img/book.png",
+                  "text": "Library",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://main.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/map.png",
+                  "text": "Map",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://map.json"
+                },
+                {
+                  "image": "http://104.128.224.237/img/shelf.png",
+                  "text": "My Shelf",
+                  "style": {
+                    "height": "21"
+                  },
+                  "url": "file://shelf.json"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
